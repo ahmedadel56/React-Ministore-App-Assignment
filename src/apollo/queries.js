@@ -1,5 +1,8 @@
 import { gql } from '@apollo/client';
-import { client } from '.';
+import client from '.';
+
+import { getCurrency } from '../redux/actions/currency'
+
 
 export const getProductById = async (productId) => {
   try {
@@ -88,8 +91,7 @@ export const getProductsByCategory = async (category) => {
   }
 };
 
-export const getCurrencies = async () => {
-  try {
+export const getCurrencies = ()=>  async (dispatch) => {
     const response = await client.query({
       query: gql`
         query {
@@ -100,8 +102,5 @@ export const getCurrencies = async () => {
         }
       `,
     });
-    return response;
-  } catch (error) {
-    console.log(error);
-  }
+    dispatch(getCurrency(response.data.currencies))
 };
