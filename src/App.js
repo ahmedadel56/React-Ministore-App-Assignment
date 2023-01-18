@@ -5,13 +5,14 @@ import { gql } from '@apollo/client';
 import { BrowserRouter } from 'react-router-dom';
 import client from './apollo';
 import { setCategories } from './redux/actions/category';
-
+import { getCurrencies } from './apollo/queries';
 import Header from './components/Header/Header';
 
 function App() {
   const dispatch = useDispatch();
-
   useEffect(() => {
+    dispatch(getCurrencies());
+
     client
       .query({
         query: gql`
