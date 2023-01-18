@@ -5,6 +5,8 @@ import {
   getCartProductsCount,
   getCartProductsTotalCost,
 } from '../../redux/selectors';
+import CartProduct from '../CartProduct/CartProduct';
+
 import './CartButton.css';
 
 export default function CartButton() {
@@ -16,6 +18,7 @@ export default function CartButton() {
       : 'auto';
   };
 
+  const cartProducts = useSelector((state) => state.cart.cartProducts);
   const currentCurrencySymbol = useSelector((state) => state.currency.symbol);
 
   const cartProductsCount = useSelector((state) => getCartProductsCount(state));
@@ -50,7 +53,11 @@ export default function CartButton() {
               </span>
             </p>
           </div>
-
+          <div className="menu__products">
+            {cartProducts.map((product) => (
+              <CartProduct key={product.id} product={product} />
+            ))}
+          </div>
           <div className="menu__total">
             <p>Total</p>
             <p>
