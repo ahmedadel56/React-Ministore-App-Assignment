@@ -2,11 +2,14 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { gql } from '@apollo/client';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import client from './apollo';
 import { setCategories } from './redux/actions/category';
 import { getCurrencies } from './apollo/queries';
 import Header from './components/Header/Header';
+import CartPage from './components/CartPage/CartPage';
+import CategoryPage from './components/CategoryPage/CategoryPage';
+import ProductPage from './components/ProductPage/ProductPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -30,6 +33,11 @@ function App() {
   return (
     <BrowserRouter>
       <Header />
+      <Routes>
+        <Route path="/" element={<CategoryPage />} />
+        <Route path="/cart" element={<CartPage />} />
+        <Route path="/:productId" element={<ProductPage />} />
+      </Routes>
     </BrowserRouter>
   );
 }

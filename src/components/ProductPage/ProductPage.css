@@ -41,6 +41,13 @@
   background-color: white;
   opacity: 0.5;
 }
+
+.product-page__description p {
+  font-weight: 400;
+  font-size: 16px;
+  margin: 5px 0;
+}
+
 .product-page__image .outofstock p {
   text-transform: uppercase;
   font-weight: 400;
@@ -145,23 +152,17 @@
   transition: transform ease-out 200ms;
 }
 
-.product-page__button:hover:not([disabled]) {
-  transform: scale(0.98);
-}
-
 .product-page__button:disabled {
   cursor: default;
+}
+
+.product-page__button:hover:not([disabled]) {
+  transform: scale(0.98);
 }
 
 .product-page__description {
   padding-top: 20px;
   font-family: "Roboto", sans-serif;
-}
-
-.product-page__description p {
-  font-weight: 400;
-  font-size: 16px;
-  margin: 5px 0;
 }
 
 .product-page__description li {
