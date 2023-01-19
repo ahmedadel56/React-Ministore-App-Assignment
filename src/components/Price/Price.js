@@ -13,13 +13,13 @@ export default function Price({ prices }) {
   });
 
   const currentCurrency = useSelector((state) => state.currency.current);
-  const { label } = currentCurrency;
+
   useEffect(() => {
     const price = prices.find(
       (price) => price.currency.label === currentCurrency.label,
     );
     setState({ price });
-  }, [label]);
+  }, [currentCurrency.label]);
 
   const { currency, amount } = state.price;
 
