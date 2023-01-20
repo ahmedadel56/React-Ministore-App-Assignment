@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { setSelectedCategory } from '../../redux/actions/category';
 import CartButton from '../CartButton/CartButton';
@@ -8,8 +8,9 @@ import CurrencyButton from '../CurrencyButton/CurrencyButton';
 import './Header.css';
 
 function Header() {
+  const dispatch = useDispatch();
   const handleSelectingCategory = (categoryName) => {
-    setSelectedCategory(categoryName);
+    dispatch(setSelectedCategory(categoryName));
   };
 
   const categories = useSelector((state) => state.categories.categories);

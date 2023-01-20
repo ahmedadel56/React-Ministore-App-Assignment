@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { getProductsByCategory } from '../../apollo/queries';
 import Product from '../Product/Product';
+import './CategoryPage.css';
 
 export default function CategoryPage() {
   const selectedCategory = useSelector((state) => state.categories.selectedCategory);

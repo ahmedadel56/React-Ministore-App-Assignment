@@ -12,6 +12,8 @@ export default function CartPage() {
   const cartProductsCount = useSelector((state) => getCartProductsCount(state));
   const cartProductsTotalCost = useSelector((state) => getCartProductsTotalCost(state));
   const currentCurrencySymbol = useSelector((state) => state.currency.symbol);
+
+  console.log(cartProducts);
   return (
     <section className="cart-page full-height">
       <div className="container">

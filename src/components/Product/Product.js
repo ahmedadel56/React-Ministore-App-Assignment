@@ -26,7 +26,7 @@ export default function Product({ product }) {
 
   return (
     <div className={`product ${!inStock && 'outofstock'}`}>
-      <Link to={`/${id}`}>
+      <Link to={`/${id}`} state={product}>
         <div className="image-container">
           <img className="product__image" src={gallery[0]} alt={name} />
           {!inStock && (
@@ -46,7 +46,7 @@ export default function Product({ product }) {
       <button
         type="button"
         className="product__button"
-        onClick={() => handleAddToCartButtonClick}
+        onClick={handleAddToCartButtonClick}
       >
         <div className="product__button-icon icon">
           <img

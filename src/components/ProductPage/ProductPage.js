@@ -1,24 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import parse from 'html-react-parser';
+import { useLocation } from 'react-router-dom';
 import Price from '../Price/Price';
 import { addProductToCart } from '../../redux/actions/cart';
-import { getProductById } from '../../apollo/queries';
+// import { getProductById } from '../../apollo/queries';
 import './ProductPage.css';
 
 export default function ProductPage() {
+  const location = useLocation();
   const dispatch = useDispatch();
-
   const [state, setState] = useState({
-    productId: window.location.pathname.split('/')[1],
-    product: {},
+    productId: location.state.id,
+    product: location.state,
     selectedAttributes: {},
     currentImageIndex: 0,
   });
 
   const {
-    id, name, brand, gallery, prices, attributes, description, inStock,
-  } = state.product;
+    id, gallery, name, inStock, brand, attributes, prices, description,
+  } = location.state;
 
   const changeCurrentImageIndex = (index) => {
     setState({ ...state, currentImageIndex: index });
@@ -54,14 +54,6 @@ export default function ProductPage() {
       1,
     ));
   };
-
-  useEffect(() => {
-    async function getData() {
-      const response = await getProductById(state.productId);
-      setState({ product: response.data.product });
-    }
-    getData();
-  }, [state.productId]);
 
   const { selectedAttributes } = state;
 
@@ -140,12 +132,12 @@ export default function ProductPage() {
               type="button"
               className="product-page__button"
               disabled={!inStock}
-              onClick={() => handleAddToCartButtonClick}
+              onClick={handleAddToCartButtonClick}
             >
               {inStock ? 'Add to cart' : 'Out of stock'}
             </button>
             <div className="product-page__description">
-              {parse(description)}
+              {description}
             </div>
           </div>
         </div>

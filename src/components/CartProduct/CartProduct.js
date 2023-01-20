@@ -7,15 +7,17 @@ import {
   decreaseCartProductAmount,
   removeProductFromCart,
 } from '../../redux/actions/cart';
+import './CartProduct.css';
 
 export default function CartProduct({ product }) {
   const {
     id: productId,
     product: {
-      name, brand, prices, attributes, selectedAttributes, gallery,
+      name, brand, prices, attributes, gallery, selectedAttributes,
     },
     amount,
   } = product;
+  console.log(product.product.selectedAttributes);
   return (
     <div className="cart-product">
       <div className="product-details">
@@ -30,7 +32,9 @@ export default function CartProduct({ product }) {
                 :
               </p>
               <div className="product-attributes__row-values">
+                {/* {selectedAttributes} */}
                 {att.items.map((item) => (
+
                   <button
                     type="button"
                     disabled

@@ -8,12 +8,13 @@ export const getCartProductsCount = (store) => {
 
 export const getCartProductsTotalCost = (store) => {
   let total = 0;
-  const currentCurrencyLabel = store.currency.label;
+  const currentCurrencyLabel = store.currency.current.label;
   store.cart.cartProducts.forEach((product) => {
-    total
-      += product.product.prices.find(
-        (prices) => prices.currency.label === currentCurrencyLabel,
+    total +=
+      product.product.prices.find(
+        (prices) => prices.currency.label === currentCurrencyLabel
       ).amount * product.amount;
   });
+
   return total.toFixed(2);
 };
