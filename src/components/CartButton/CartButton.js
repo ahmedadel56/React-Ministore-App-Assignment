@@ -21,7 +21,7 @@ export default function CartButton() {
   };
 
   const cartProducts = useSelector((state) => state.cart.cartProducts);
-  const currentCurrencySymbol = useSelector((state) => state.currency.symbol);
+  const currentCurrencySymbol = useSelector((state) => state.currency.current.symbol);
 
   const cartProductsCount = useSelector((state) => getCartProductsCount(state));
   const cartProductsTotalCost = useSelector((state) => getCartProductsTotalCost(state));
