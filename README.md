@@ -1,6 +1,12 @@
 # React-Ministore-App-Assignment
 
-This is the Front-end App for Ministore, an app that provides various products in the store including clothes, and tech products, the user can purchase any product with various currencies he can make an order through the cart, and even can check chosen products from the cart menu
+> This is the Front-end App for Ministore, an app that provides various products in the store including clothes, and tech products, the user can purchase any product with various currencies he can make an order through the cart, and even can check chosen products from the cart menu
+
+![image](https://user-images.githubusercontent.com/43178495/213828722-80a235ed-47e8-4314-b5dd-b607dd3212b7.png)
+![image](https://user-images.githubusercontent.com/43178495/213828783-c1cfd4d3-6dbc-4f2a-86fc-47d4fb9436a6.png)
+![image](https://user-images.githubusercontent.com/43178495/213828861-d57291e3-866b-4d6a-a819-a7aa98e14e3f.png)
+![image](https://user-images.githubusercontent.com/43178495/213828982-b8fb1e0a-653d-457e-859c-21a621cfa6c4.png)
+
 
 ## App functions: :wink:
 
