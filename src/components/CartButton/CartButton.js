@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import {
@@ -10,6 +10,8 @@ import CartProduct from '../CartProduct/CartProduct';
 import './CartButton.css';
 
 export default function CartButton() {
+  const cartButtonRef = useRef();
+  const cartMenuRef = useRef();
   const [cartMenuIsOpen, setCartMenuIsOpen] = useState(false);
   const toggleCartMenu = () => {
     setCartMenuIsOpen(!cartMenuIsOpen);
@@ -19,14 +21,14 @@ export default function CartButton() {
   };
 
   const cartProducts = useSelector((state) => state.cart.cartProducts);
-  const currentCurrencySymbol = useSelector((state) => state.currency.symbol);
+  const currentCurrencySymbol = useSelector((state) => state.currency.current.symbol);
 
   const cartProductsCount = useSelector((state) => getCartProductsCount(state));
   const cartProductsTotalCost = useSelector((state) => getCartProductsTotalCost(state));
 
   return (
     <>
-      <div className="cart-button">
+      <div className="cart-button" ref={cartButtonRef}>
         <button type="button" onClick={toggleCartMenu}>
           <img src="/images/empty-cart.svg" alt="cart" className="icon" />
           {cartProductsCount > 0 && (
@@ -41,7 +43,7 @@ export default function CartButton() {
           !cartMenuIsOpen && 'hidden'
         }`}
       >
-        <div className="cart-button__menu">
+        <div className="cart-button__menu" ref={cartMenuRef}>
           <div className="menu__header">
             <p>
               My Bag,

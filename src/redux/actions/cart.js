@@ -5,10 +5,11 @@ import {
   REMOVE_PRODUCT_FROM_CART,
 } from '../actionTypes';
 
-export const addProductToCart = (product, amount) => ({
+export const addProductToCart = (product, amount) => {
+  return {
   type: ADD_PRODUCT_TO_CART,
   payload: { product, amount },
-});
+}};
 
 export const removeProductFromCart = (id) => ({
   type: REMOVE_PRODUCT_FROM_CART,

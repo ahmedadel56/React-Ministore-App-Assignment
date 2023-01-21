@@ -1,4 +1,5 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import Price from '../Price/Price';
 import ProductImages from '../ProductImages/ProductImages';
 
@@ -7,15 +8,18 @@ import {
   decreaseCartProductAmount,
   removeProductFromCart,
 } from '../../redux/actions/cart';
+import './CartProduct.css';
 
 export default function CartProduct({ product }) {
+  const dispatch = useDispatch();
   const {
-    id: productId,
+    id,
     product: {
-      name, brand, prices, attributes, selectedAttributes, gallery,
+      name, brand, prices, attributes, gallery, selectedAttributes,
     },
     amount,
   } = product;
+
   return (
     <div className="cart-product">
       <div className="product-details">
@@ -31,6 +35,7 @@ export default function CartProduct({ product }) {
               </p>
               <div className="product-attributes__row-values">
                 {att.items.map((item) => (
+
                   <button
                     type="button"
                     disabled
@@ -60,7 +65,7 @@ export default function CartProduct({ product }) {
         </div>
       </div>
       <div className="product-quantity">
-        <button type="button" onClick={() => increaseCartProductAmount(productId)}>
+        <button type="button" onClick={() => dispatch(increaseCartProductAmount(id))}>
           <img
             src="/images/plus-square-small.svg"
             alt="increase product amount"
@@ -71,9 +76,9 @@ export default function CartProduct({ product }) {
           type="button"
           onClick={() => {
             if (amount === 1) {
-              removeProductFromCart(productId);
+              dispatch(removeProductFromCart(id));
             } else {
-              decreaseCartProductAmount(productId);
+              dispatch(decreaseCartProductAmount(id));
             }
           }}
         >
